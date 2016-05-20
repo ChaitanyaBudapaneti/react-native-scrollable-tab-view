@@ -34,6 +34,7 @@ const ScrollableTabView = React.createClass({
     renderTabBar: PropTypes.any,
     style: View.propTypes.style,
     contentProps: PropTypes.object,
+    tabBarHeight:PropTypes.number,
   },
 
   getDefaultProps() {
@@ -141,7 +142,6 @@ const ScrollableTabView = React.createClass({
          initialPage={this.props.initialPage}
          onPageSelected={this._updateSelectedPage}
          keyboardDismissMode="on-drag"
-         scrollEnabled={!this.props.locked}
          onPageScroll={(e) => {
            const { offset, position, } = e.nativeEvent;
            this._updateScrollValue(position + offset);
@@ -198,6 +198,7 @@ const ScrollableTabView = React.createClass({
       activeTab: this.state.currentPage,
       scrollValue: this.state.scrollValue,
       containerWidth: this.state.containerWidth,
+      tabBarHeight:this.props.tabBarHeight,
     };
 
     if (this.props.tabBarUnderlineColor) {
